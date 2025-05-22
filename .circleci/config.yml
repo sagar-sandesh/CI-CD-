@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/python:3.11  # Use any Python version you need (3.7, 3.8, 3.9, etc.)
+    steps:
+      - checkout  # Checks out your source code
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            python -m unittest discover  # Or use pytest if you prefer
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test
