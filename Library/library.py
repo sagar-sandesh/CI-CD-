@@ -1,5 +1,5 @@
+from Book.books import Book
 
-import Book
 class Library:
     def __init__(self):
         self.books = []
@@ -25,10 +25,3 @@ class Library:
                 book.return_book()
                 return True
         return False
-
-    def test_borrow_book_available():
-        lib = Library()
-        lib.add_book("Dune", "Frank Herbert")
-        result = lib.borrow_book("Dune")
-        assert result == True
-        assert lib.books[0].available == False
